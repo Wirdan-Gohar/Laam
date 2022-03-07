@@ -45,12 +45,16 @@ const Carosel = () => {
         <div style={borderstyle}>
           <h2 style={{marginLeft:'30px',fontSize:'1.8em',letterSpacing:'.15em'}}>New Arrivals</h2>
 
-          <Carousel style={{ width: "360px!important" }} show={3.5} slide={1} swiping={true} leftArrow={<ItemLeft/>} rightArrow={<ItemRight/>}>
+
+          <Carousel show={3.5} slide={1} swiping={true} leftArrow={<ItemLeft/>} rightArrow={<ItemRight/>}>
+            
               {box.map((it) => (
                 <img src={it.img} style={{ height: "450px" }} />
           
               ))}
+            
           </Carousel>
+         
         </div>
       </div>
     </>
