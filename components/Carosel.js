@@ -31,8 +31,7 @@ const Carosel = () => {
   ]);
 
   const borderstyle={
-    borderTop:'15px solid #F7F7F7',
-    borderBottom:'15px solid #F7F7F7'
+    borderTop:'20px solid #F7F7F7',
   }
   return (
     <>

@@ -30,8 +30,7 @@ const Deals_Carosel = () => {
   ]);
 
   const borderstyle={
-    borderTop:'15px solid #F7F7F7',
-    borderBottom:'15px solid #F7F7F7'
+    borderTop:'20px solid #F7F7F7',
   }
   return (
     <>
@@ -43,9 +42,9 @@ const Deals_Carosel = () => {
         }}
       >
         <div style={borderstyle}>
-          <h2 style={{marginLeft:'30px',fontSize:'1.8em',letterSpacing:'.15em'}}>New Arrivals</h2>
+          <h2 style={{marginLeft:'30px',fontSize:'1.8em',letterSpacing:'.15em'}}>DEALS OF THE DAY</h2>
 
-          <Carousel style={{ width: "360px!important" }} show={3.5} slide={1} swiping={true} leftArrow={<Deals_ItemLeft/>} Deals_rightArrow={<Deals_ItemRight/>}>
+          <Carousel style={{ width: "360px!important" }} show={3.5} slide={1} swiping={true} leftArrow={<Deals_ItemLeft/>} rightArrow={<Deals_ItemRight/>}>
               {box.map((it) => (
                 <img src={it.img} style={{ height: "450px" }} />
           
