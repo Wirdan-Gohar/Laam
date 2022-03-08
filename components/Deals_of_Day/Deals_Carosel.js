@@ -10,22 +10,22 @@ const Deals_Carosel = () => {
     {
       id: 1,
       text: "ABBB",
-      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Farah-Talib-Aziz_15_0573b847-6a8b-4116-9803-3e01484e1742_540x.jpg?v=1646392031",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Dastoor-Clothing_21_540x.jpg?v=1646470663",
     },
     {
       id: 2,
       text: "Sohail",
-      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Farah-Talib-Aziz_15_0573b847-6a8b-4116-9803-3e01484e1742_540x.jpg?v=1646392031",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Hem_28_0238090f-6aa0-476c-8a60-38a35366fee7_540x.jpg?v=1646470690",
     },
     {
       id: 3,
       text: "Areebb",
-      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Farah-Talib-Aziz_15_0573b847-6a8b-4116-9803-3e01484e1742_540x.jpg?v=1646392031",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Imrozia-Premium_63_540x.jpg?v=1646470651",
     },
     {
       id: 4,
       text: "WirdanB",
-      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Farah-Talib-Aziz_15_0573b847-6a8b-4116-9803-3e01484e1742_540x.jpg?v=1646392031",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Fascino_29_0fa00a47-e8e9-4351-b410-36c493666dac_540x.jpg?v=1646470731",
     },
   ]);
 

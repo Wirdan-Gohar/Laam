@@ -1,15 +1,14 @@
-//import Carousel from "react-bootstrap/Carousel";
-import Highlight from "react-highlight";
 import { useState, useEffect } from "react";
-import fea from "../../styles/features.module.css";
+import finish from "../../styles/finishtouch.module.css"
 
 const Finish_Touch = () => {
   const [box, setBox] = useState([
     {
       id: 1,
-      text: "ABBB",
-      img: "//cdn.shopify.com/s/files/1/2337/7003/files/Jewellery_6_200x.jpg?v=1646405225",
+      text: "Areebb",
+      img: "//cdn.shopify.com/s/files/1/2337/7003/files/Khussas_200x.jpg?v=1646405242",
     },
+    
     {
       id: 2,
       text: "Sohail",
@@ -17,8 +16,8 @@ const Finish_Touch = () => {
     },
     {
       id: 3,
-      text: "Areebb",
-      img: "//cdn.shopify.com/s/files/1/2337/7003/files/Khussas_200x.jpg?v=1646405242",
+      text: "ABBB",
+      img: "//cdn.shopify.com/s/files/1/2337/7003/files/Jewellery_6_200x.jpg?v=1646405225",
     },
     {
       id: 4,
@@ -44,12 +43,12 @@ const Finish_Touch = () => {
 
   return (
     <>
-      <div className={fea.outline}>
-        <div className={fea.borderstyle}>
-          <h2 className={fea.spacing}>Finishing Touches</h2>
-          <div className={fea.alignment}>
+      <div className={finish.outline}>
+        <div className={finish.borderstyle}>
+          <h2 className={finish.spacing}>Finishing Touches</h2>
+          <div className={finish.alignment}>
             {box.map((it) => (
-              <img src={it.img}  />
+              <img src={it.img} className={finish.imgSize} />
             ))}
           </div>
         </div>

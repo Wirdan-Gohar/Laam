@@ -8,6 +8,7 @@ import Deals_Carosel from '../components/Deals_of_Day/Deals_Carosel'
 import Features from '../components/Featured _Brands/Features'
 import Finish_Touch from '../components/Finishing_Touch/Finish_Touch'
 import Shop_By_Price from '../components/Shop_By_Price/Shop_By_Price'
+import Footer from '../components/footer/footer'
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -18,6 +19,7 @@ export default function Home() {
       <Features/>
       <Finish_Touch/>
       <Shop_By_Price/>
+      <Footer />
     </div>
   )
 }

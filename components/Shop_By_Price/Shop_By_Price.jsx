@@ -1,7 +1,7 @@
 //import Carousel from "react-bootstrap/Carousel";
 import Highlight from "react-highlight";
 import { useState, useEffect } from "react";
-import fea from "../../styles/features.module.css";
+import shop from "../../styles/shopbypri.module.css";
 
 const Shop_By_Price = () => {
   const [box, setBox] = useState([
@@ -13,17 +13,17 @@ const Shop_By_Price = () => {
     {
       id: 2,
       text: "Sohail",
-      img: "//cdn.shopify.com/s/files/1/2337/7003/files/Footwear_29.jpg?v=1646405401",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Kurta-Set_12_c4d6cd59-a835-465b-aeaa-b6285ba69a4c.jpg?v=1646405412",
     },
     {
       id: 3,
       text: "Areebb",
-      img: "//cdn.shopify.com/s/files/1/2337/7003/files/Footwear_29.jpg?v=1646405401",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Summer-Lawn_11_dc70445b-1449-42be-be15-e7c6d9e4ccb4.jpg?v=1646405423",
     },
     {
       id: 4,
       text: "WirdanB",
-      img: "//cdn.shopify.com/s/files/1/2337/7003/files/Footwear_29.jpg?v=1646405401",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Jewellery_7.jpg?v=1646405433",
     },
   
   
@@ -35,17 +35,23 @@ const Shop_By_Price = () => {
 
   return (
     <>
-      <div className={fea.outline}>
-        <div className={fea.borderstyle}>
-          <h2 className={fea.spacing}>Shop By Price</h2>
-          <div className={fea.alignment}>
+      <div className={shop.outline}>
+        <div className={shop.borderstyle}>
+          <h2 className={shop.spacing}>Shop By Price</h2>
+          <div className={shop.alignment}>
             {box.map((it) => (
-              <img src={it.img} className={fea.shopPrice}/>
+              <img src={it.img} className={shop.shopPrice}/>
             ))}
           </div>
         </div>
       </div>
-     
+      
+      <div className={shop.outline}>
+          <div  className={shop}>
+          <img src='https://cdn.shopify.com/s/files/1/2337/7003/files/Women_s-Day_Desktop_1500x.jpg?v=1646405855'
+            width='100%'/>
+          </div>
+      </div>
 
     </>
   );

@@ -11,22 +11,22 @@ const Carosel = () => {
     {
       id: 1,
       text: "ABBB",
-      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Farah-Talib-Aziz_15_0573b847-6a8b-4116-9803-3e01484e1742_540x.jpg?v=1646392031",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Asifa-_-Nabeel_4fc01449-2411-4a63-9760-65c5d5441068_540x.jpg?v=1646579962",
     },
     {
       id: 2,
       text: "Sohail",
-      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Farah-Talib-Aziz_15_0573b847-6a8b-4116-9803-3e01484e1742_540x.jpg?v=1646392031",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/MARIA.B_640c3932-3eb0-4b15-9b93-93547fbca9b3_540x.jpg?v=1646724914",
     },
     {
       id: 3,
       text: "Areebb",
-      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Farah-Talib-Aziz_15_0573b847-6a8b-4116-9803-3e01484e1742_540x.jpg?v=1646392031",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Noor-By-Sadia-Asad_20_540x.jpg?v=1646470367",
     },
     {
       id: 4,
       text: "WirdanB",
-      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Farah-Talib-Aziz_15_0573b847-6a8b-4116-9803-3e01484e1742_540x.jpg?v=1646392031",
+      img: "https://cdn.shopify.com/s/files/1/2337/7003/files/Sable-Vogue_86e7fba4-c857-4c0e-9339-4d0e318d04fe_540x.jpg?v=1646660689",
     },
   ]);
 
