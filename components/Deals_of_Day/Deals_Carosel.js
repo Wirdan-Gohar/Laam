@@ -2,9 +2,11 @@ import { Carousel } from "@trendyol-js/react-carousel";
 //import Carousel from "react-bootstrap/Carousel";
 import Highlight from "react-highlight";
 import { useState, useEffect } from "react";
-
+import Link from 'next/link'
 import Deals_ItemLeft from "./Deals_Item";
 import Deals_ItemRight from "./Deals_ItemRight";
+import { useRouter } from 'next/router';
+import { DeleteOutline, Edit } from '@material-ui/icons';
 const Deals_Carosel = () => {
   const [box, setBox] = useState([
     {
@@ -46,7 +48,12 @@ const Deals_Carosel = () => {
 
           <Carousel style={{ width: "360px!important" }} show={3.5} slide={1} swiping={true} leftArrow={<Deals_ItemLeft/>} rightArrow={<Deals_ItemRight/>}>
               {box.map((it) => (
-                <img src={it.img} style={{ height: "450px" }} />
+                <Link href="/category/[id]" as={`/category/${it.id}`}>
+               <img src={it.img} style={{ height: "450px" }}/>
+              </Link>
+                // <Link href="/category/[id]" as={`/category/${it.id}`}> <h2>xghsjsjjs</h2></Link>
+                  // <img src={it.img} style={{ height: "450px" }}/>
+               
           
               ))}
           </Carousel>
