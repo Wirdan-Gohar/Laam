@@ -2,11 +2,11 @@
 //import { useSelector } from 'react-redux';
 
 import { Search, ShoppingCartOutlined ,LocalShippingOutlined} from '@material-ui/icons';
-
 import { Avatar, Badge } from '@material-ui/core';
 import router, { useRouter } from 'next/router'
 import Link from 'next/link'
-import  nav from '../styles/navbar.module.css'
+import  nav from '../styles/navbar.module.css';
+import logo from '../public/pernia.png'
 //import jwt_decode from "jwt-decode";
 
 
@@ -44,8 +44,11 @@ const Navbar = () => {
                 <div className={nav.Left}>
                 <hr/>
                     <div className={nav.MeniItems}><div className={nav.StyledLink} href="/">
-                        <p className={nav.Logo}>Pernia.</p>
-                       
+                        <p >
+                        {/* <img src="https://wirdanwebsite.000webhostapp.com/images/pernialogo.png" width={100} height={100}/> */}
+                        <img src="/pernia.png" className={nav.Logo} width={100} />
+                        </p>
+                        
                     </div> 
                     </div>
 
@@ -98,7 +101,7 @@ const Navbar = () => {
                              <div className={nav.NavbarDropdown} >
                                  <div className={nav.MeniItems}><Avatar alt={'A'} src="/static/images/avatar/1.jpg" />
                                  </div>
-                            <div className={nav.NavbarDropdownContent} className="my__unique__button__class-asdf123">
+                            <div className={nav.NavbarDropdownContent} >
                                 {/* <div className={nav.Link} href='userProfile/profile' >
                                      <div className={nav.MeniItems}>Account</div></div> */}
                                      <br />

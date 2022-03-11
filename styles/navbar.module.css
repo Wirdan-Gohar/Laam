@@ -45,13 +45,8 @@ height: 70px;
    padding-top: 10px;
 }
  .Logo {
-                color:black;
-                font-weight: bold;
-                font-size: xx-large;
-                margin-left:600px;
-                margin-right: auto;
-                /* ${mobile({ fontSize: "20px" })} */
-
+   display:inline;
+   margin-bottom:-30px;
  }
 
 .SearchContainer{
