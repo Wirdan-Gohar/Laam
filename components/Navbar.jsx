@@ -73,8 +73,9 @@ const Navbar = () => {
                 <div className={nav.Right}>
                 {/* alt={user.first_name} */}
                     {/* {loggedIn? */}
-                      
-                    < div className={nav.Link} href="/cart">
+
+                    <Link href='/cart' as={`/cart`} >  
+                    < div className={nav.Link}>
                         <div className={nav.StyledLink}>
                      <div className={nav.icons}>
                         <div className={nav.SearchContainer}>
@@ -82,7 +83,7 @@ const Navbar = () => {
                         <div className={nav.Search} style={{ color: "gray", fontSize: 18 }} />
                         </div>
                         <LocalShippingOutlined  color="action" style={{cursor:'pointer',color:'black',fontSize:'38px',marginRight:'20px'}}/>
-                        <Badge  color="primary" >
+                        <Badge  badgeContent={2} color="primary" >
                         <ShoppingCartOutlined color="action" style={{cursor:'pointer',color:'black',fontSize:'38px',marginRight:'20px'}} />
                          </Badge>
                             </div>
@@ -96,6 +97,7 @@ const Navbar = () => {
 
                         </div>
                         </div>
+                        </Link>
 
 
                              <div className={nav.NavbarDropdown} >
