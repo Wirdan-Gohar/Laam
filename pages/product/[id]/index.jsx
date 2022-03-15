@@ -1,6 +1,6 @@
 import { Add, PanToolSharp, Remove } from "@material-ui/icons";
 import styled from "styled-components";
-
+import Carousel from "../../../components/Carosel";
 import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/footer/Footer";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
@@ -325,9 +325,16 @@ const Product = () => {
        
       </Review>
 }*/}
+
       </Wrapper>
+
+      {/* carousel showed in product page */}
+      <h2 style={{marginLeft:'30px',fontSize:'1.8em',letterSpacing:'.15em'}}>Related Projects</h2>
+
+      <Carousel />
       <Footer />
     </Container>
+    
   );
 };
 

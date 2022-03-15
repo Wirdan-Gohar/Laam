@@ -43,7 +43,7 @@ const Carosel = () => {
         }}
       >
         <div style={borderstyle}>
-          <h2 style={{marginLeft:'30px',fontSize:'1.8em',letterSpacing:'.15em'}}>New Arrivals</h2>
+          {/* <h2 style={{marginLeft:'30px',fontSize:'1.8em',letterSpacing:'.15em'}}>New Arrivals</h2> */}
 
 
           <Carousel show={3.5} slide={1} swiping={true} leftArrow={<ItemLeft/>} rightArrow={<ItemRight/>}>

@@ -9,16 +9,20 @@ import Features from '../components/Featured _Brands/Features'
 import Finish_Touch from '../components/Finishing_Touch/Finish_Touch'
 import Shop_By_Price from '../components/Shop_By_Price/Shop_By_Price'
 import Footer from '../components/footer/footer'
+import Newsletter from "../components/footer/Newsletter";
+
 export default function Home() {
   return (
     <div className={styles.container}>
      <Navbar/>
      <Slider/>
+     <h2 style={{marginLeft:'30px',fontSize:'1.8em',letterSpacing:'.15em'}}>New Arrivals</h2>
      <Carosel/>
       <Deals_Carosel/>
       <Features/>
       <Finish_Touch/>
       <Shop_By_Price/>
+      <Newsletter/>
       <Footer />
     </div>
   )

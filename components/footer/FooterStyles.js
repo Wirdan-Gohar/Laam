@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Box = styled.div`
 padding: 20px 0px;
-background: black;
+background: #1B252D;
 bottom: 0;
 width: 104%;
 margin-left:-31.8px;
@@ -17,8 +17,10 @@ export const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	max-width: 1000px;
+	// max-width: 1000px;
 	margin: 0 auto;
+	padding-top:20px;
+	padding-bottom:40px;
 	/* background: red; */
 `
 
@@ -26,14 +28,14 @@ export const Column = styled.div`
 display: flex;
 flex-direction: column;
 text-align: left;
-margin-left: 60px;
+// margin-left: -230px;
 `;
 
 export const Row = styled.div`
 display: grid;
 grid-template-columns: repeat(auto-fill,
-						minmax(185px, 1fr));
-grid-gap: 20px;
+						minmax(285px, 1fr));
+grid-gap: 60px;
 
 @media (max-width: 1000px) {
 	grid-template-columns: repeat(auto-fill,
@@ -43,8 +45,7 @@ grid-gap: 20px;
 
 export const FooterLink = styled.a`
 color: #fff;
-margin-bottom: 20px;
-font-size: 18px;
+// margin-bottom: 20px;
 text-decoration: none;
 
 &:hover {
@@ -54,8 +55,6 @@ text-decoration: none;
 `;
 
 export const Heading = styled.p`
-font-size: 24px;
 color: #fff;
-margin-bottom: 40px;
-font-weight: bold;
+text-decoration: underline;
 `;
