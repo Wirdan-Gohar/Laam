@@ -6,7 +6,7 @@ const Newsletter = () => {
         <>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"></link>
         
-        <div class="container footer_text">
+        <div class="container footer_text" style={{padding:'20px 0 20px 0'}}>
         <div class="row footer_row news-row">
             <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 ">
                 <div class="logo-social-area">
@@ -21,22 +21,23 @@ const Newsletter = () => {
                 </div>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 inner-new-row">
-                <div class="news-area">
+                <div class="news-area" style={{marginTop:'30px'}}>
                 <div class="email_box">
                     <form method="post" action="/contact#contact_form" id="contact_form" accept-charset="UTF-8" class="contact-form" data-omnisend-captured-form="true">
-                        <input type="hidden" name="form_type" value="customer"/><input type="hidden" name="utf8" value="✓"/>
+                        <input type="hidden" name="form_type" value="customer"/>
+                        <input type="hidden" name="utf8" value="✓"/>
                     
                     
                     <input name="contact[tags]" type="hidden" value="newsletter"/>
                     <div class="news-field-area"> 
-                    <input type="email" value="" placeholder="Email address" name="contact[email]" id="Email" class="txtbox" aria-label="email@example.com" autocorrect="off" autocapitalize="off"/>
+                    <input type="email" value="" placeholder="Email address" name="contact[email]" id="Email" class="txtbox" aria-label="email@example.com" autocorrect="off" autocapitalize="off" style={{width:'300px',height:'40px'}}/>
                         <button class="btn btn-link" type="submit" value="Subscribe" name="commit" id="Subscribe">
-                            <img src="https://cdn.shopify.com/s/files/1/2337/7003/files/New_Project_27.png?v=1628161930" alt="IMG"/></button>
+                            <img src="https://cdn.shopify.com/s/files/1/2337/7003/files/New_Project_27.png?v=1628161930" alt="IMG" width={30} style={{marginLeft:'-80px'}}/></button>
                     </div>
                     
                     </form>
                 </div>
-                <p>By signing up, you agree to LAAM’s <a href="#">Privacy Policy</a> and <a href="#">Terms &amp; Conditions</a>.</p>
+                <p style={{fontSize:'15px'}}>By signing up, you agree to LAAM’s <a href="#">Privacy Policy</a> and <a href="#">Terms &amp; Conditions</a>.</p>
                 </div>
             </div>
         </div>
