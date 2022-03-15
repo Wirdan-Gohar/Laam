@@ -37,6 +37,9 @@ const Product = () => {
     "https://cdn.shopify.com/s/files/1/2337/7003/products/16_0e6df57b-33fd-4c82-9f77-7caf40d1bdc9_700x.jpg?v=1631001480",
     "https://cdn.shopify.com/s/files/1/2337/7003/products/16_0e6df57b-33fd-4c82-9f77-7caf40d1bdc9_700x.jpg?v=1631001480",
   ]);
+
+  const [icon, setIcon] = useState([
+    { name:'S',status:false},{name:'M',status:false},{name:'L',status:false},{name:'XL',status:false},{name:'XS',status:false}]);
   const [carddiv, setCardDiv] = useState(false);
   const handleClick = (direction) => {
     console.log("hello");
@@ -122,6 +125,10 @@ const Product = () => {
 
   const incrementCount = () => {
     setCount(count + 1);
+  };
+  const ChangeStatus = (i) => {
+    console.log("status",icon[i].status)
+    icon[i].status=!icon[i].status;
   };
   const decCount = () => {
     setCount(count - 1);
@@ -238,15 +245,50 @@ const Product = () => {
                 <Add />
               </AmountBtn> */}
             </AmountContainer>
-            {carddiv && (
+            {/* {carddiv && (
               <Button onClick={() => addToCart()}>ADD TO CART</Button>
-            )}
+            )} */}
+            
           </AddContainer>
           <Desc>
             <p style={{fontSize:'16px',fontStyle:'italic' }}>Estimated shipping date: <b>Mar 27, 2022</b> <br /><br />
               Note:Delivery will vary as per customer location.</p>
           </Desc>
+
+
+          <Size>
+            <h4>SIZE</h4>
+            <SizeArea >
+            {icon.map((ic,i)=>(
+              <Icon onClick={()=>ChangeStatus(i)} style={ic.status==true?{backgroundColor:'black',color:'white'}:{backgroundColor:'white',color:'black'}}>
+                {ic.name}
+              </Icon>
+            ))
+
+            }
+            </SizeArea>
+           </Size> 
+
+
+          <Button onClick={() => addToCart()}>ADD TO CART</Button>
+          <hr width='580px'/>
+         <div style={{display:'flex',flexDirection:'row',marginLeft:'40px'}}>
+           <h5>SIZE GUIDE</h5>
+           <h2 style={{marginLeft:'auto',marginRight:'20px',cursor:'pointer'}}>+</h2>
+         </div>
+         <hr width='580px'/>
+         <div style={{display:'flex',flexDirection:'row',marginLeft:'40px'}}>
+           <h5>PRODUCT DESCRIPTION</h5>
+           <h2 style={{marginLeft:'auto',marginRight:'20px',cursor:'pointer'}}>+</h2>
+         </div>
+         <hr width='580px'/>
+         <div style={{display:'flex',flexDirection:'row',marginLeft:'40px'}}>
+           <h5>PRICE QUERY AND CUSTOMIZATION</h5>
+           <h2 style={{marginLeft:'auto',marginRight:'20px',cursor:'pointer'}}>+</h2>
+         </div>
         </InfoContainer>
+
+        
         {/* {localStorage.getItem('token') &&
           <>
           {ratingValue==0?
@@ -298,6 +340,27 @@ const FilterTitle = styled.span`
 const Review = styled.div`
   margin-top: 450px;
 `;
+const Size = styled.div`
+  margin-left: 20px;
+  padding:20px;
+`;
+
+const Icon = styled.div`
+  height:40px;
+  width:40px;
+  cursor:pointer;
+  margin-right:6px;
+  
+  border-radius:10px;
+  text-align:center;
+  border-style:groove;
+`;
+const SizeArea = styled.div`
+  display:flex;
+  flex-direction:row;
+`;
+
+
 const Rate = styled.div`
   font-weight: 600;
   font-size: 22px;
@@ -435,21 +498,16 @@ const Slide = styled.div`
 
 const Button = styled.button`
   cursor: pointer;
-  /* 
-  
- 
-  background-color: white;
-  cursor: pointer;
- 
-  &:hover{
-      background-color: #ffcdcd;
-  } */
+  width:500px;
+  margin-bottom:30px;
+  margin-left:50px;
+  margin-right:50px;
   transition: all 0.5s ease;
   color: #000000;
   border: 1px solid teal;
   text-align: center;
   background-color: transparent;
-  padding: 15px;
+  padding: 8px;
   outline: none;
   font-weight: bold;
   border-radius: 1px;
