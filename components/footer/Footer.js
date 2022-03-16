@@ -8,7 +8,8 @@ Column,
 FooterLink,
 Heading,
 } from "./FooterStyles";
-
+import Link from "next/link";
+import styled from "styled-components";
 const Footer = () => {
 return (
 
@@ -17,19 +18,20 @@ return (
 		<Row>
 		<Column style={{marginTop:'20px', marginLeft:'20px'}}>
 			{/* <Heading>About Us</Heading> */}
-			<FooterLink href="#">Become a Partner</FooterLink>
-			<FooterLink href="#">Editorial Blog</FooterLink>
-			<FooterLink href="#">Pernia Rewards</FooterLink>
-			<FooterLink href="#">Pernia Disclaimers</FooterLink>
+			
+			<FootLink ><Link href='/SellAt' as={`/SellAt`}>Become a Partner</Link></FootLink>
+			<FootLink > <Link href='/Blog' as={`/Blog`}>Editorial Blog</Link></FootLink>
+			<FootLink > <Link href='/Rewards' as={`/Rewards`}>Pernia Rewards</Link></FootLink>
+			<FootLink > <Link href='/Rewards' as={`/Rewards`}>Pernia Disclaimers</Link></FootLink>
 		</Column>
 		<Column>
 			<Heading>Help center</Heading>
-			<FooterLink href="#">Track your Order</FooterLink>
-			<FooterLink href="#">Shipping and Delivery</FooterLink>
-			<FooterLink href="#">Cancellations</FooterLink>
-			<FooterLink href="#">FAQs</FooterLink>
-			<FooterLink href="#">Returns</FooterLink>
-			<FooterLink href="#">Refund Policy</FooterLink>
+			<FootLink ><Link href='/Track' as={`/Track`}>Track your Order</Link></FootLink>
+			<FootLink ><Link href='/ShipAndDlv' as={`/ShipAndDlv`}>Shipping and Delivery</Link></FootLink>
+			<FootLink ><Link href='/Cancellation' as={`/Cancellation`}>Cancellations</Link></FootLink>
+			<FootLink >FAQs</FootLink>
+			<FootLink><Link href='/Exchange' as={`/Exchange`}>Returns</Link></FootLink>
+			<FootLink><Link href='/Refund' as={`/Refund`}>Refund Policy</Link></FootLink>
 		</Column>
 		<Column>
 			{/* <Heading>Contact Us</Heading>
@@ -43,8 +45,8 @@ return (
 			<FooterLink href="#">Email: customercare@pernia.pk</FooterLink>
 			
 			<Heading>Partner with Pernia</Heading>
-			<FooterLink href="#">Sell at Pernia</FooterLink>
-			<FooterLink href="#">Connect with us</FooterLink>
+			<FootLink ><Link href='/SellAt' as={`/SellAt`}>Sell at Pernia</Link></FootLink>
+			<FootLink><Link href='/Connect_With_Us' as={`/Connect_With_Us`} >Connect with us</Link></FootLink>
 		</Column>
 		<Column>
 			{/* <Heading>Social Media</Heading> */}
@@ -86,3 +88,9 @@ return (
 );
 };
 export default Footer;
+const FootLink=styled.div`
+ text-decoration:none;
+ color:white;
+`
+
+

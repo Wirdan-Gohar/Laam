@@ -46,7 +46,7 @@ const Navbar = () => {
                     <div className={nav.MeniItems}><div className={nav.StyledLink} href="/">
                         <p >
                         {/* <img src="https://wirdanwebsite.000webhostapp.com/images/pernialogo.png" width={100} height={100}/> */}
-                        <img src="/pernia.png" className={nav.Logo} width={100} />
+                        <Link href='/' as={`/`}><img src="/pernia.png"  style={{marginLeft:'600px'}}className={nav.Logo} width={100} /></Link>
                         </p>
                         
                     </div> 
