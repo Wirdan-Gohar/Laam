@@ -7,7 +7,12 @@ import Deals_ItemLeft from "./Deals_Item";
 import Deals_ItemRight from "./Deals_ItemRight";
 import { useRouter } from 'next/router';
 import { DeleteOutline, Edit } from '@material-ui/icons';
+import axios from "axios";
+import { List } from "reactstrap";
+import Slide from "./Slide";
 const Deals_Carosel = () => {
+  const [tagid, setTagId] = useState(null)
+  const [deals, setDeals] = useState([])
   const [box, setBox] = useState([
     {
       id: 1,
@@ -31,6 +36,36 @@ const Deals_Carosel = () => {
     },
   ]);
 
+  useEffect(() => {
+        let list=[]
+     axios.get(`http://localhost:8080/ecom-api/tag`)
+     .then(res=>{
+        res.data.data.map(tt=>{
+          if(tt.name=='Deals of the Day'||tt.name=='deals of the day'||tt.name=='Deals of the day')
+          {
+          setTagId(tt.id)
+          axios.get(`http://localhost:8080/ecom-api/collections`)
+     .then(resp=>{
+       console.log("res",resp.data.data)
+        resp.data.data.map(it=>{
+          if(it.tag_id==tt.id)
+          {
+            list.push(it)
+          }
+        
+        })
+        console.log("list",list)
+        setDeals(list)
+     }).catch(err=>console.log(err))
+          console.log("id",tt.id)
+          }
+        })
+     }).catch(err=>console.log(err))
+     
+           
+  }, [])
+
+
   const borderstyle={
     borderTop:'20px solid #F7F7F7',
   }
@@ -39,24 +74,20 @@ const Deals_Carosel = () => {
       <div
         style={{
           backgroundColor: "white",
-          marginLeft: "-30px",
-          marginRight: "-30px",
+          
         }}
       >
-        <div style={borderstyle}>
-          <h2 style={{marginLeft:'30px',fontSize:'1.8em',letterSpacing:'.15em'}}>DEALS OF THE DAY</h2>
 
-          <Carousel style={{ width: "360px!important" }} show={3.5} slide={1} swiping={true} leftArrow={<Deals_ItemLeft/>} rightArrow={<Deals_ItemRight/>}>
-              {box.map((it) => (
-                <Link href="/category/[id]" as={`/category/${it.id}`}>
-               <img src={it.img} style={{ height: "450px" }}/>
-              </Link>
-                // <Link href="/category/[id]" as={`/category/${it.id}`}> <h2>xghsjsjjs</h2></Link>
-                  // <img src={it.img} style={{ height: "450px" }}/>
-               
+         
+        <div style={borderstyle}>
+          <h2 style={{marginLeft:'30px',fontSize:'1.8em',letterSpacing:'.15em',marginTop:'20px',marginBottom:'20px'}}>DEALS OF THE DAY</h2>
+
+         
           
-              ))}
-          </Carousel>
+          {deals.length!=0?
+          <Slide deal={deals} /> 
+           :''
+          }
         </div>
       </div>
     </>

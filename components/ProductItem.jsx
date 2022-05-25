@@ -27,7 +27,8 @@ import {
         
         {/* <Circle /> */}
         {/* <div style={{display:'flex',flexDirection:'column'}}> */}
-        <Image src={item.img}/>
+        {/* <Image src={item.img}/> */}
+        <Image src='https://cdn.shopify.com/s/files/1/2337/7003/products/54_34eb250d-e0b3-415d-8668-db1f2de4120a_300x.jpg?v=1637756407'/>
         {/* <PriceCol>
             {item.name}
         </PriceCol> */}

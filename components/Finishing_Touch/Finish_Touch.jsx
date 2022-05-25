@@ -48,7 +48,7 @@ const Finish_Touch = () => {
           <h2 className={finish.spacing}>Finishing Touches</h2>
           <div className={finish.alignment}>
             {box.map((it) => (
-              <img src={it.img} className={finish.imgSize} />
+              <img key={it.id} src={it.img} className={finish.imgSize} />
             ))}
           </div>
         </div>

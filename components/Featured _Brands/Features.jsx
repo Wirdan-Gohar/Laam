@@ -62,7 +62,7 @@ const Features = () => {
           <h2 className={fea.spacing}>Features Brands</h2>
           <div className={fea.alignment}>
             {box.map((it) => (
-              <img src={it.img} className={fea.imgSize} />
+              <img key={it.id} src={it.img} className={fea.imgSize} />
             ))}
           </div>
         </div>

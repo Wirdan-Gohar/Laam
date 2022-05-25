@@ -40,7 +40,7 @@ const Shop_By_Price = () => {
           <h2 className={shop.spacing}>Shop By Price</h2>
           <div className={shop.alignment}>
             {box.map((it) => (
-              <img src={it.img} className={shop.shopPrice}/>
+              <img key={it.id} src={it.img} className={shop.shopPrice}/>
             ))}
           </div>
         </div>

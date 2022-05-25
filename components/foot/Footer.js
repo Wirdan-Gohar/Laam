@@ -19,19 +19,19 @@ return (
 		<Column style={{marginTop:'20px', marginLeft:'20px'}}>
 			{/* <Heading>About Us</Heading> */}
 			
-			<FootLink ><Link href='/SellAt' as={`/SellAt`}>Become a Partner</Link></FootLink>
-			<FootLink > <Link href='/Blog' as={`/Blog`}>Editorial Blog</Link></FootLink>
-			<FootLink > <Link href='/Rewards' as={`/Rewards`}>Pernia Rewards</Link></FootLink>
-			<FootLink > <Link href='/Rewards' as={`/Rewards`}>Pernia Disclaimers</Link></FootLink>
+			<FootLink ><Link href='/sellAt' as={`/sellAt`}>Become a Partner</Link></FootLink>
+			<FootLink > <Link href='/blog' as={`/blog`}>Editorial Blog</Link></FootLink>
+			<FootLink > <Link href='/rewards' as={`/rewards`}>Pernia Rewards</Link></FootLink>
+			<FootLink > <Link href='/rewards' as={`/rewards`}>Pernia Disclaimers</Link></FootLink>
 		</Column>
 		<Column>
 			<Heading>Help center</Heading>
-			<FootLink ><Link href='/Track' as={`/Track`}>Track your Order</Link></FootLink>
-			<FootLink ><Link href='/ShipAndDlv' as={`/ShipAndDlv`}>Shipping and Delivery</Link></FootLink>
-			<FootLink ><Link href='/Cancellation' as={`/Cancellation`}>Cancellations</Link></FootLink>
+			<FootLink ><Link href='/track' as={`/track`}>Track your Order</Link></FootLink>
+			<FootLink ><Link href='/shipanddlv' as={`/shipanddlv`}>Shipping and Delivery</Link></FootLink>
+			<FootLink ><Link href='/cancellation' as={`/cancellation`}>Cancellations</Link></FootLink>
 			<FootLink >FAQs</FootLink>
-			<FootLink><Link href='/Exchange' as={`/Exchange`}>Returns</Link></FootLink>
-			<FootLink><Link href='/Refund' as={`/Refund`}>Refund Policy</Link></FootLink>
+			<FootLink><Link href='/exchange' as={`/exchange`}>Returns</Link></FootLink>
+			<FootLink><Link href='/refund' as={`/refund`}>Refund Policy</Link></FootLink>
 		</Column>
 		<Column>
 			{/* <Heading>Contact Us</Heading>
@@ -45,8 +45,8 @@ return (
 			<FooterLink href="#">Email: customercare@pernia.pk</FooterLink>
 			
 			<Heading>Partner with Pernia</Heading>
-			<FootLink ><Link href='/SellAt' as={`/SellAt`}>Sell at Pernia</Link></FootLink>
-			<FootLink><Link href='/Connect_With_Us' as={`/Connect_With_Us`} >Connect with us</Link></FootLink>
+			<FootLink ><Link href='/sellAt' as={`/sellAt`}>Sell at Pernia</Link></FootLink>
+			<FootLink><Link href='/connect' as={`/connect`} >Connect with us</Link></FootLink>
 		</Column>
 		<Column>
 			{/* <Heading>Social Media</Heading> */}

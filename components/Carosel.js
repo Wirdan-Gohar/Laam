@@ -38,8 +38,7 @@ const Carosel = () => {
       <div
         style={{
           backgroundColor: "white",
-          marginLeft: "-30px",
-          marginRight: "-30px",
+         
         }}
       >
         <div style={borderstyle}>
@@ -49,7 +48,7 @@ const Carosel = () => {
           <Carousel show={3.5} slide={1} swiping={true} leftArrow={<ItemLeft/>} rightArrow={<ItemRight/>}>
             
               {box.map((it) => (
-                <img src={it.img} style={{ height: "450px" }} />
+                <img  key={it.id}src={it.img} style={{ height: "450px" }} />
           
               ))}
             

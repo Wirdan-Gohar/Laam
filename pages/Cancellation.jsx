@@ -1,13 +1,13 @@
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import { useState } from "react";
 import styled from "styled-components";
-
+import Head from 'next/head'
 // import { mobile } from "../pages/responsive";
 import Link from "next/link";
 import Navbar from "../components/Navbar";
-import Footer from "../components/footer/Footer";
+import Footer from "../components/foot/Footer";
 import { Button } from "reactstrap";
-import Newsletter from "../components/footer/Newsletter";
+import Newsletter from "../components/foot/Newsletter";
 const Cancellation = () => {
 return(
     <>

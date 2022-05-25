@@ -1,20 +1,20 @@
-//import { useDispatch } from 'react-redux';
-//import { removeProduct } from './../../redux/action';
-//import { setCount } from './../../redux/action';
+import { useDispatch } from 'react-redux';
+import { removeProduct } from './../../redux/action';
+import { setCount } from './../../redux/action';
 import { Add, Remove, DeleteOutline } from "@material-ui/icons";
 import styled from "styled-components";
 //import { mobile } from "../../../pages/responsive";
 // const ShoppingCart = ({ name, id, count, price, variant,image }) 
-const ShoppingCart = ({ name, id, count, price, image }) => {
-  // const dispatch = useDispatch();
+const ShoppingCart = ({ name, id, count, price, image,variant }) => {
+   const dispatch = useDispatch();
 
   const removeFromCart = () => {
-    // dispatch(removeProduct(
-    //   {
-    //     id: id,
+    dispatch(removeProduct(
+      {
+        id: id,
 
-    //   }
-    // ))
+      }
+    ))
   }
 
   const setProductCount = (count) => {
@@ -22,15 +22,30 @@ const ShoppingCart = ({ name, id, count, price, image }) => {
       return false;
     }
 
+    count=count-1;
+
+    dispatch(setCount(
+      {
+        id: id,
+
+        count: count,
+      }
+    ))
+  }
+  const setProductSumCount = (count) => {
+    if (count <= 0) {
+      return false;
+    }
+
     count=count+1;
 
-    // dispatch(setCount(
-    //   {
-    //     id: id,
+    dispatch(setCount(
+      {
+        id: id,
 
-    //     count: count,
-    //   }
-    // ))
+        count: count,
+      }
+    ))
   }
 
   return (
@@ -56,13 +71,13 @@ const ShoppingCart = ({ name, id, count, price, image }) => {
       </ProductDetail>
       <PriceDetail>
         <ProductAmountContainer>
-          <AmountBtn> <Remove onClick={() => setProductCount(count - 1)} /></AmountBtn>
+          <AmountBtn> <Remove onClick={() => setProductCount(count )} /></AmountBtn>
           <Amount><strong>{count}</strong></Amount>
-          <AmountBtn> <Add onClick={() => setProductCount(count + 1)} /></AmountBtn>
+          <AmountBtn> <Add onClick={() => setProductSumCount(count)} /></AmountBtn>
           <AmountBtnDel> <DeleteOutline onClick={() => removeFromCart()} /></AmountBtnDel>
 
         </ProductAmountContainer>
-        <ProductPrice>${price * count}</ProductPrice>
+        <ProductPrice>{price * count} Rs</ProductPrice>
       </PriceDetail>
 
 

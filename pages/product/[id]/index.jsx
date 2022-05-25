@@ -2,21 +2,22 @@ import { Add, PanToolSharp, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import Carousel from "../../../components/Carosel";
 import Navbar from "../../../components/Navbar";
-import Footer from "../../../components/footer/Footer";
+import Footer from "../../../components/foot/Footer";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 //import { useParams } from "react-router-dom";
 import axios from "axios";
-//import { addProduct } from '../../../components/redux/action';
+import { addProduct } from '../../../components/redux/action';
 import { useRouter } from "next/router";
 import React, { memo } from "react";
 import { sliderItems } from "../../../data";
 //import { useLocation } from "react-router";
 // import { publicRequest } from "../requestMethods";
-//import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 //import { Carousel } from 'react-responsive-carousel';
 import router from "next/router";
+import Head from 'next/head'
 //import {toast} from 'react-toastify';
 //import 'react-toastify/dist/ReactToastify.css';
 //toast.configure()
@@ -24,7 +25,8 @@ import ImageMagnifier from "./ImageMagnifier";
 //import Rating from '@material-ui/lab/Rating';
 import Typography from "@material-ui/core/Typography";
 //import Box from '@material-ui/core/Box';
-import css from '../index.module.css'
+import css from "../index.module.css";
+import Newsletter from "../../../components/foot/Newsletter";
 const Product = () => {
   const [ratingValue, setRatingValue] = useState(0);
   const [review, setReview] = useState(0);
@@ -39,7 +41,12 @@ const Product = () => {
   ]);
 
   const [icon, setIcon] = useState([
-    { name:'S',status:false},{name:'M',status:false},{name:'L',status:false},{name:'XL',status:false},{name:'XS',status:false}]);
+    { name: "S", status: false },
+    { name: "M", status: false },
+    { name: "L", status: false },
+    { name: "XL", status: false },
+    { name: "XS", status: false },
+  ]);
   const [carddiv, setCardDiv] = useState(false);
   const handleClick = (direction) => {
     console.log("hello");
@@ -120,15 +127,15 @@ const Product = () => {
   //     value: ''
   //   }]);
 
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [count, setCount] = useState(0);
 
   const incrementCount = () => {
     setCount(count + 1);
   };
   const ChangeStatus = (i) => {
-    console.log("status",icon[i].status)
-    icon[i].status=!icon[i].status;
+    console.log("status", icon[i].status);
+    icon[i].status = !icon[i].status;
   };
   const decCount = () => {
     setCount(count - 1);
@@ -138,33 +145,36 @@ const Product = () => {
   const [color, setColor] = React.useState();
   const [mat, setMaterial] = React.useState();
   const [size, setSize] = React.useState();
-
-  //   const [item, setItem] = useState({
-  //     name: '',
-  //     supplier_id: null,
-  //     category_id: null,
-  //     variants: [],
-  //     combinations: [],
-  //     images: []
-  //   });
-  const [item, setItem] = useState({
-    id: 1,
-    name: "ABC",
-    img: "https://cdn.shopify.com/s/files/1/2337/7003/products/16_0e6df57b-33fd-4c82-9f77-7caf40d1bdc9_700x.jpg?v=1631001480",
-  });
+  const [colName, setColName] = React.useState('');
+  const [suppName, setSuppName] = React.useState('');
+    const [item, setItem] = useState({
+      name: '',
+      // supplier_id: null,
+      // category_id: null,
+      collection_id:null,
+      price:null,
+      variants: [],
+      combinations: [],
+      images: [],
+    });
+  // const [item, setItem] = useState({
+  //   id: 1,
+  //   name: "ABC",
+  //   img: "https://cdn.shopify.com/s/files/1/2337/7003/products/16_0e6df57b-33fd-4c82-9f77-7caf40d1bdc9_700x.jpg?v=1631001480",
+  // });
   const router = useRouter();
   const { id } = router.query;
 
-  // const handleCount = () => {
-  //   if (count === 1) {
-  //     setCount(count);
-  //   } else {
-  //     let x = count;
-  //     x = x - 1;
-  //     setCount(x);
-  //   }
-  // };
-  
+  const handleCount = () => {
+    if (count === 1) {
+      setCount(count);
+    } else {
+      let x = count;
+      x = x - 1;
+      setCount(x);
+    }
+  };
+
   const [comb, setcomb] = useState("");
   const [vid, setvid] = useState();
   const [strr, setstrr] = useState("");
@@ -181,10 +191,65 @@ const Product = () => {
     selected: "",
     name: "",
   });
+  const ChkCount = () => {
+    if(count===15)
+    setCount(count)
+    else
+    setCount(count=>count+1)
+ }
+ 
+ const addToCart = () => {
+    
+  dispatch(addProduct(
+    {
+      id:   id,
+      name: item.name,
+      price: item.price,
+      count: count,
+      variant:item.variants,
+      image:'https://cdn.shopify.com/s/files/1/2337/7003/products/54_34eb250d-e0b3-415d-8668-db1f2de4120a_300x.jpg?v=1637756407'
+
+    }
+  ))
+  // settoggle(true)
+ // toast(`${item.name} Added Successfully`)
+  //router.push('/cart')
+}
+  useEffect(() => {
+    let list=[]
+ axios.get(`http://localhost:8080/ecom-api/products/${id}`)
+ .then(res=>{
+  console.log("name",res.data.data)
+   setItem(res.data.data)  
+      axios.get(`http://localhost:8080/ecom-api/collections/${res.data.data.collection_id}`)
+ .then(resp=>{
+  
+       setColName(resp.data.data.name)
+       axios.get(`http://localhost:8080/ecom-api/suppliers/${resp.data.data.brand_id}`)
+       .then(resp=>{
+             setSuppName(resp.data.data.name)
+          
+          }).catch(err=>console.log(err))
+       
+    }).catch(err=>console.log(err))
+   
+
+
+
+ }).catch(err=>console.log(err))
+  
+ 
+       
+}, [])
+
+
+
 
   return (
+    <>
+     <Navbar />
     <Container>
-      <Navbar />
+     
       <Wrapper>
         <Boxx>
           <Arrow direction="left" onClick={() => handleClick("left")}>
@@ -206,7 +271,7 @@ const Product = () => {
 
         <InfoContainer>
           <Title>
-            HEM | PARIZAAD - LUXURY PRET - HEM - LOTUS OUTFIT - ICE BLUE
+            {item.name}
           </Title>
           <Desc>
             {/* <div style={{ display: "flex", flexDirection: "row" }}>
@@ -217,78 +282,155 @@ const Product = () => {
               <p>Collection :</p>
               <p style={{ color: "skyblue" }}>HEM</p>
             </div> */}
-            <p>Brand : Zara Shahjahan</p>
-            <p>Collection : Coco By Zara Shahjahan | Spring Summer Lawn'22</p>
-            
-            
+            <p>Brand : {suppName}</p>
+            <p>Collection : {colName}</p>
           </Desc>
 
-          
           <AddContainer>
-            <AmountContainer>
-              {/* onClick={() => handleCount(setCount(count - 1))} */}
-              <p style={{ fontWeight: "600",fontSize:'20px',marginLeft:'20px' }}>PKR. 20,000</p>
-              <span><button className={css.minus_btn} onClick={decCount}>-</button></span>
-              <span><p className={css.counter}>{count}</p></span>
-              <span><button className={css.add_btn} onClick={incrementCount}>+</button></span>
-              
-              
-              {/* <AmountBtn>
-                {" "}
-                <Remove />
-              </AmountBtn>
-              <Amount>
-                {55}
-              </Amount>
-              <AmountBtn>
-                {" "}
-                <Add />
-              </AmountBtn> */}
+          <AmountContainer>
+          <p
+                style={{
+                  fontWeight: "800",
+                  fontSize: "20px",
+                  marginLeft: "20px",
+                  color:'red',
+                  width:'150px'
+                }}
+              >
+                {count!=0?item.price*count:item.price} Rs
+              </p>
+              <span>
+              <button className={css.minus_btn}onClick={() => handleCount(setCount(count - 1))} >
+                  -
+              </button>
+              </span>
+    
+              <span>
+                <p className={css.counter}>{count}</p>
+              </span>
+              <span>
+                <button className={css.add_btn} onClick={() => ChkCount()} >
+                  +
+                </button>
+                
+              </span>
+              <p style={{paddingLeft:'8px',marginTop:'18px',fontWeight:'500'}}>Quantity</p>
             </AmountContainer>
-            {/* {carddiv && (
-              <Button onClick={() => addToCart()}>ADD TO CART</Button>
-            )} */}
+            {/* <AmountContainer>
+         
+              <p
+                style={{
+                  fontWeight: "600",
+                  fontSize: "20px",
+                  marginLeft: "20px",
+                }}
+              >
+                {item.price} Rs
+              </p>
+              <span>
+                <button className={css.minus_btn} onClick={decCount}>
+                  -
+                </button>
+              </span>
+              <span>
+                <p className={css.counter}>{count}</p>
+              </span>
+              <span>
+                <button className={css.add_btn} onClick={incrementCount}>
+                  +
+                </button>
+              </span>
+</AmountContainer> */}
             
+         
+          
           </AddContainer>
           <Desc>
-            <p style={{fontSize:'16px',fontStyle:'italic' }}>Estimated shipping date: <b>Mar 27, 2022</b> <br /><br />
-              Note:Delivery will vary as per customer location.</p>
+            <p style={{ fontSize: "16px", fontStyle: "italic" }}>
+              Estimated shipping date: <b>April 27, 2022</b> <br />
+              <br />
+              Note:Delivery will vary as per customer location.
+            </p>
           </Desc>
-
 
           <Size>
             <h4>SIZE</h4>
-            <SizeArea >
-            {icon.map((ic,i)=>(
-              <Icon onClick={()=>ChangeStatus(i)} style={ic.status==true?{backgroundColor:'black',color:'white'}:{backgroundColor:'white',color:'black'}}>
-                {ic.name}
-              </Icon>
-            ))
-
-            }
+            <SizeArea>
+              {icon.map((ic, i) => (
+                <Icon key={i}
+                  onClick={() => ChangeStatus(i)}
+                  style={
+                    ic.status == true
+                      ? { backgroundColor: "black", color: "white" }
+                      : { backgroundColor: "white", color: "black" }
+                  }
+                >
+                  {ic.name}
+                </Icon>
+              ))}
             </SizeArea>
-           </Size> 
-
+          </Size>
 
           <Button onClick={() => addToCart()}>ADD TO CART</Button>
-          <hr width='580px'/>
-         <div style={{display:'flex',flexDirection:'row',marginLeft:'40px'}}>
-           <h5>SIZE GUIDE</h5>
-           <h2 style={{marginLeft:'auto',marginRight:'20px',cursor:'pointer'}}>+</h2>
-         </div>
-         <hr width='580px'/>
-         <div style={{display:'flex',flexDirection:'row',marginLeft:'40px'}}>
-           <h5>PRODUCT DESCRIPTION</h5>
-           <h2 style={{marginLeft:'auto',marginRight:'20px',cursor:'pointer'}}>+</h2>
-         </div>
-         <hr width='580px'/>
-         <div style={{display:'flex',flexDirection:'row',marginLeft:'40px'}}>
-           <h5>PRICE QUERY AND CUSTOMIZATION</h5>
-           <h2 style={{marginLeft:'auto',marginRight:'20px',cursor:'pointer'}}>+</h2>
-         </div>
+          <hr width="580px" />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginLeft: "40px",
+            }}
+          >
+            <h5>SIZE GUIDE</h5>
+            <h2
+              style={{
+                marginLeft: "auto",
+                marginRight: "20px",
+                cursor: "pointer",
+              }}
+            >
+              +
+            </h2>
+          </div>
+          <hr width="580px" />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginLeft: "40px",
+            }}
+          >
+            <h5>PRODUCT DESCRIPTION</h5>
+            <h2
+              style={{
+                marginLeft: "auto",
+                marginRight: "20px",
+                cursor: "pointer",
+              }}
+            >
+              +
+            </h2>
+          </div>
+          <hr width="580px" />
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginLeft: "40px",
+            }}
+          >
+            <h5>PRICE QUERY AND CUSTOMIZATION</h5>
+            <h2
+              style={{
+                marginLeft: "auto",
+                marginRight: "20px",
+                cursor: "pointer",
+              }}
+            >
+              +
+            </h2>
+          </div>
         </InfoContainer>
 
-        
         {/* {localStorage.getItem('token') &&
           <>
           {ratingValue==0?
@@ -325,16 +467,25 @@ const Product = () => {
        
       </Review>
 }*/}
-
       </Wrapper>
 
       {/* carousel showed in product page */}
-      <h2 style={{marginLeft:'30px',fontSize:'1.8em',letterSpacing:'.15em'}}>Related Projects</h2>
+      <h2
+        style={{
+          marginLeft: "30px",
+          fontSize: "1.8em",
+          letterSpacing: ".15em",
+        }}
+      >
+        Related Products
+      </h2>
 
       <Carousel />
-      <Footer />
+     
     </Container>
-    
+    <Newsletter/>
+    <Footer />
+    </>
   );
 };
 
@@ -349,24 +500,23 @@ const Review = styled.div`
 `;
 const Size = styled.div`
   margin-left: 20px;
-  padding:20px;
+  padding: 20px;
 `;
 
 const Icon = styled.div`
-  height:40px;
-  width:40px;
-  cursor:pointer;
-  margin-right:6px;
-  
-  border-radius:10px;
-  text-align:center;
-  border-style:groove;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  margin-right: 6px;
+
+  border-radius: 10px;
+  text-align: center;
+  border-style: groove;
 `;
 const SizeArea = styled.div`
-  display:flex;
-  flex-direction:row;
+  display: flex;
+  flex-direction: row;
 `;
-
 
 const Rate = styled.div`
   font-weight: 600;
@@ -400,6 +550,7 @@ const FilterSizeOpt = styled.span`
 `;
 const Container = styled.div`
   background-color: whitesmoke;
+  margin-top:40px;
 `;
 
 const Wrapper = styled.div`
@@ -505,10 +656,10 @@ const Slide = styled.div`
 
 const Button = styled.button`
   cursor: pointer;
-  width:500px;
-  margin-bottom:30px;
-  margin-left:50px;
-  margin-right:50px;
+  width: 500px;
+  margin-bottom: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
   transition: all 0.5s ease;
   color: #000000;
   border: 1px solid teal;

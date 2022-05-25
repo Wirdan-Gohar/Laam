@@ -4,9 +4,10 @@ import styled from "styled-components";
 
 import Link from "next/link";
 import Navbar from "../components/Navbar";
-import Footer from "../components/footer/Footer";
+import Footer from "../components/foot/Footer";
 import { Button } from "reactstrap";
-import Newsletter from "../components/footer/Newsletter";
+import Newsletter from "../components/foot/Newsletter";
+import Head from 'next/head'
 const Rewards = () => {
     return(
         <>

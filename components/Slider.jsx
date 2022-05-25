@@ -4,6 +4,11 @@ import styled from "styled-components";
 import { sliderItems } from "../data";
 // import { mobile } from "../pages/responsive";
 import Link from "next/link";
+import Image from "next/image";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+//import { Carousel } from 'react-responsive-carousel';
+import Carousel from 'react-bootstrap/Carousel'
+import 'bootstrap/dist/css/bootstrap.css';
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -17,7 +22,25 @@ const Slider = () => {
 
   return (
     <Container>
-      <Arrow direction="left" onClick={() => handleClick("left")}>
+      <div style={{marginBottom:'60px'}}>
+    <Carousel>
+      <Carousel>
+   {sliderItems.map(it=>(
+     <Carousel.Item interval={5000}>
+     <img
+       style={{width:'100%',padding:'10px'}}
+       src={it.img}
+       alt="First slide"
+     />
+     
+   </Carousel.Item>
+   ))}     
+  
+  
+</Carousel>
+    </Carousel>
+</div>
+      {/* <Arrow direction="left" onClick={() => handleClick("left")}>
         <ArrowLeftOutlined />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
@@ -26,18 +49,13 @@ const Slider = () => {
             <ImgContainer>
               <Image src={item.img} />
             </ImgContainer>
-            {/* <InfoContainer>
-              <Title>{item.title}</Title>
-              <Desc>{item.desc}</Desc>
-              
-             <Link href="/Products"><Button>SHOW NOW</Button></Link>
-            </InfoContainer> */}
+           
           </Slide>
         ))}
       </Wrapper>
       <Arrow direction="right" onClick={() => handleClick("right")}>
         <ArrowRightOutlined />
-      </Arrow>
+      </Arrow> */}
     </Container>
   );
 };
@@ -49,6 +67,7 @@ export default Slider;
 const Container = styled.div`
   width: 100%;
   display: flex;
+  top:90px;
   height:70vh;
   position: relative;
   overflow: hidden;
@@ -97,10 +116,6 @@ const ImgContainer = styled.div`
   flex: 1;
 `;
 
-const Image = styled.img`
-  
-  margin-top:110px;
-`;
 
 const InfoContainer = styled.div`
   flex: 1;

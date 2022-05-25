@@ -1,17 +1,18 @@
 import styled from "styled-components";
 //import Announcement from "../../../components/Announcement";
-import Navbar from "../../../components/Navbar"
-import Footer from "../../../components/footer/Footer";
+import Navbar2 from "../../../components/Navbar"
+import Footer from "../../../components/foot/Footer";
 import { useEffect, useState } from 'react';
 import css from '../index.module.css';
 
 import {
     HomeOutlined
   } from "@material-ui/icons";
-//import axios from "axios";
+import axios from "axios";
 import ProductItem from "../../../components/ProductItem";
-
+import Head from 'next/head'
 import { useRouter } from 'next/router'
+import Newsletter from "../../../components/foot/Newsletter";
 
 const Category = () => {
     const router = useRouter();
@@ -98,8 +99,22 @@ const Category = () => {
         status:0
     })
     useEffect(() => {
-        
-     
+        let list=[]
+      axios.get(`http://localhost:8080/ecom-api/products`)
+      .then(resp=>{
+        console.log("res",resp.data.data)
+         resp.data.data.map(it=>{
+           console.log("cid",it.collection_id,id)
+           if(it.collection_id==id)
+           {
+             list.push(it)
+             console.log("list",list)
+           }
+         
+         })
+         console.log("list",list)
+         setItems(list)
+      }).catch(err=>console.log(err))
            
     }, [])
 
@@ -126,12 +141,12 @@ const Category = () => {
                 ))} */}          
 
     return (
-        
+      <>
+      <Navbar2/>
         <Container>
            
-            <Navbar />
-{/* 
-            <Title>Home</Title> */}
+            
+
             
             <FilterContainer>
             
@@ -167,38 +182,38 @@ const Category = () => {
               <FilterText className={css.pricebox}>
                   <input type='checkbox' id='' style={{display:'none'}}/>  
                   <input className={css.pricein} type='checkbox' id='price'/>
-                    <label className={css.pricela} for="price">Rs. 5,000-10,000</label>  <br/>
+                    <label className={css.pricela} htmlFor="price">Rs. 5,000-10,000</label>  <br/>
                   <input className={css.pricein} type='checkbox' id='price'/>
-                    <label className={css.pricela} for="price">Rs. 10,000-20,000</label> <br/>
+                    <label className={css.pricela} htmlFor="price">Rs. 10,000-20,000</label> <br/>
                   <input className={css.pricein} type='checkbox' id='price'/>
-                    <label className={css.pricela} for="price">Rs. 30,000-3000</label>
+                    <label className={css.pricela} htmlFor="price">Rs. 30,000-3000</label>
               </FilterText>  
             </Filter>
             
             <Filter>
             <FilterTitle>Delivery</FilterTitle> 
               <FilterText> 
-                <input className={css.pricein} type='checkbox' id='w1'/><label className={css.pricela} for="w1">1-2 Weeks </label><br />
-                <input className={css.pricein} type='checkbox' id='w1'/><label className={css.pricela} for="w1">3-4 Weeks </label><br />
-                <input className={css.pricein} type='checkbox' id='w1'/><label className={css.pricela} for="w1">5-6 Weeks </label><br />
+                <input className={css.pricein} type='checkbox' id='w1'/><label className={css.pricela} htmlFor="w1">1-2 Weeks </label><br />
+                <input className={css.pricein} type='checkbox' id='w1'/><label className={css.pricela} htmlFor="w1">3-4 Weeks </label><br />
+                <input className={css.pricein} type='checkbox' id='w1'/><label className={css.pricela} htmlFor="w1">5-6 Weeks </label><br />
               </FilterText>  
             </Filter>
 
             <Filter>
             <FilterTitle>Size</FilterTitle> 
               <FilterText>
-                  <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} for="price">XL</label> <br />
-                  <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} for="price">L</label> <br />
-                  <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} for="price">M</label> <br />
-                  <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} for="price">S</label> <br />
-                  <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} for="price">XS</label> 
+                  <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">XL</label> <br />
+                  <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">L</label> <br />
+                  <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">M</label> <br />
+                  <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">S</label> <br />
+                  <input className={css.pricein} type='checkbox' id='price'/><label className={css.pricela} htmlFor="price">XS</label> 
               </FilterText>  
             </Filter>
 
             </LeftBar>   
             <Productshow>
-              {pro.map(it=>(
-                 <ProductItem item={it}/>
+              {items.map((it,key)=>(
+                 <ProductItem item={it} key={key}/>
                  
               ))
 
@@ -209,10 +224,12 @@ const Category = () => {
 
             </GridArea>
             
-
+            <Newsletter/>
+            <Footer/>
            
         </Container>
-       
+        
+       </>
     );
 };
 
@@ -231,16 +248,16 @@ const Title = styled.h1`
 `;
 
 const FilterContainer = styled.div`
-margin-top:80px;
+margin-top:100px;
   display: flex;
   justify-content: space-between;
 `;
 const GridArea = styled.div`
   display: flex;
   flex-direction:row;
-  height:200px;
+ 
   
-  justify-content: space-between;
+  
 `;
 
 const Filter = styled.div`
@@ -263,8 +280,9 @@ const FilterHome = styled.div`
 const LeftBar = styled.div`
   margin-left:30px;
   margin-top:25px;
-  width:650px;
+  width:350px;
   height:800px;
+  margin-right:30px;
   // border-style:groove;
   box-shadow: 0 2px 2px rgb(11 25 28 / 10%);
 `;
@@ -303,6 +321,7 @@ const Productshow = styled.div`
     padding: 20px;
     display: flex;
     flex-direction:row;
+    
     flex-wrap: wrap;
     justify-content: space-between;
 `;

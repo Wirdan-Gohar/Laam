@@ -1,4 +1,4 @@
-//import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Item from './item';
 import styled from "styled-components";
 import { useState, useEffect } from "react";
@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import Link from 'next/link'
 
 const ShoppingCart = () => {
-    const [cartItems, setPro] = useState([
+    const [cartItem, setPro] = useState([
         {
             id:1,
             img:'https://cdn.shopify.com/s/files/1/2337/7003/products/33_bd16bfee-54ca-48c2-8003-31873146bada_300x.jpg?v=1645728681',
@@ -63,17 +63,17 @@ const ShoppingCart = () => {
         },
         
     ])
-  //const { cartItems } = useSelector(state => state.cart);
+  const { cartItems } = useSelector(state => state.cart);
 
-//   const priceTotal = useSelector(state => {
-//     const cartItems = state.cart.cartItems;
-//     let totalPrice = 0;
-//     if (cartItems.length > 0) {
-//       cartItems.map(item => totalPrice += item.price * item.count);
-//     }
+  const priceTotal = useSelector(state => {
+    const cartItems = state.cart.cartItems;
+    let totalPrice = 0;
+    if (cartItems.length > 0) {
+      cartItems.map(item => totalPrice += item.price * item.count);
+    }
 
-//     return totalPrice;
-//   })
+    return totalPrice;
+  })
 
   return (
     <Container>
@@ -87,7 +87,7 @@ const ShoppingCart = () => {
             
           <Link href="/Products"><TopButton>CONTINUE SHOPPING</TopButton></Link>
           <TopTexts>
-            <TopText>Shopping Bag(2)</TopText>
+            <TopText>Shopping Bag({cartItems.length})</TopText>
             <TopText>Your Wishlist (0)</TopText>
           </TopTexts>
           {cartItems.length == 0 ?
@@ -113,9 +113,8 @@ const ShoppingCart = () => {
                     desc={"akgag"}
                     name={item.name}
                     price={item.price}
-                    //count={item.count}
-                    count={1}
-                    //variant={item.variant}
+                    count={item.count}
+                    variant={item.variant}
                     image={item.img}
                   />
                   </>
@@ -130,8 +129,8 @@ const ShoppingCart = () => {
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              {/* {priceTotal.toFixed(2)} */}
-              <SummaryItemPrice>$450</SummaryItemPrice>
+             
+              <SummaryItemPrice> {priceTotal.toFixed(2)} Rs</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -143,8 +142,8 @@ const ShoppingCart = () => {
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              {/* {priceTotal.toFixed(2)} */}
-              <SummaryItemPrice ><strong>$456</strong></SummaryItemPrice>
+            
+              <SummaryItemPrice ><strong>  {priceTotal.toFixed(2)} Rs</strong></SummaryItemPrice>
             </SummaryItem>
             {cartItems.length == 0? 
                 <TopButton style={{width:'350px',margin:'auto'}} disabled  type='button'>CHECKOUT NOW</TopButton>
@@ -179,7 +178,7 @@ export default ShoppingCart
 
 
 const Container = styled.div`
-margin-top:60px;
+margin-top:90px;
 `;
 
 const Wrapper = styled.div`
