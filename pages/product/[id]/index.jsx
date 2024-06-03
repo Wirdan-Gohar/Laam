@@ -1,32 +1,32 @@
-import { Add, PanToolSharp, Remove } from "@material-ui/icons";
-import styled from "styled-components";
-import Carousel from "../../../components/Carosel";
-import Navbar from "../../../components/Navbar";
-import Footer from "../../../components/foot/Footer";
-import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
-import { useEffect, useState} from "react";
+import { Add, PanToolSharp, Remove } from '@material-ui/icons';
+import styled from 'styled-components';
+import Carousel from '../../../components/Carosel';
+import Navbar from '../../../components/Navbar';
+import Footer from '../../../components/foot/Footer';
+import { ArrowLeftOutlined, ArrowRightOutlined } from '@material-ui/icons';
+import { useEffect, useState } from 'react';
 //import { useParams } from "react-router-dom";
-import axios from "axios";
+import axios from 'axios';
 import { addProduct } from '../../../components/redux/action';
-import { useRouter } from "next/router";
-import React, { memo } from "react";
-import { sliderItems } from "../../../data";
+import { useRouter } from 'next/router';
+import React, { memo } from 'react';
+import { sliderItems } from '../../../data';
 //import { useLocation } from "react-router";
 // import { publicRequest } from "../requestMethods";
 import { useDispatch, useSelector } from 'react-redux';
-import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 //import { Carousel } from 'react-responsive-carousel';
-import router from "next/router";
-import Head from 'next/head'
+import router from 'next/router';
+import Head from 'next/head';
 //import {toast} from 'react-toastify';
 //import 'react-toastify/dist/ReactToastify.css';
 //toast.configure()
-import ImageMagnifier from "./ImageMagnifier";
+import ImageMagnifier from './ImageMagnifier';
 //import Rating from '@material-ui/lab/Rating';
-import Typography from "@material-ui/core/Typography";
+import Typography from '@material-ui/core/Typography';
 //import Box from '@material-ui/core/Box';
-import css from "../index.module.css";
-import Newsletter from "../../../components/foot/Newsletter";
+import css from '../index.module.css';
+import Newsletter from '../../../components/foot/Newsletter';
 const Product = () => {
   const [ratingValue, setRatingValue] = useState(0);
   const [review, setReview] = useState(0);
@@ -36,21 +36,21 @@ const Product = () => {
   const toggle = () => setModal(!modal);
   const [slideIndex, setSlideIndex] = useState(0);
   const [path, setPath] = useState([
-    "https://cdn.shopify.com/s/files/1/2337/7003/products/16_0e6df57b-33fd-4c82-9f77-7caf40d1bdc9_700x.jpg?v=1631001480",
-    "https://cdn.shopify.com/s/files/1/2337/7003/products/16_0e6df57b-33fd-4c82-9f77-7caf40d1bdc9_700x.jpg?v=1631001480",
+    'https://cdn.shopify.com/s/files/1/2337/7003/products/16_0e6df57b-33fd-4c82-9f77-7caf40d1bdc9_700x.jpg?v=1631001480',
+    'https://cdn.shopify.com/s/files/1/2337/7003/products/16_0e6df57b-33fd-4c82-9f77-7caf40d1bdc9_700x.jpg?v=1631001480',
   ]);
 
   const [icon, setIcon] = useState([
-    { name: "S", status: false },
-    { name: "M", status: false },
-    { name: "L", status: false },
-    { name: "XL", status: false },
-    { name: "XS", status: false },
+    { name: 'S', status: false },
+    { name: 'M', status: false },
+    { name: 'L', status: false },
+    { name: 'XL', status: false },
+    { name: 'XS', status: false },
   ]);
   const [carddiv, setCardDiv] = useState(false);
-  const handleClick = (direction) => {
-    console.log("hello");
-    if (direction === "left") {
+  const handleClick = direction => {
+    console.log('hello');
+    if (direction === 'left') {
       setSlideIndex(slideIndex > 0 ? slideIndex - 1 : path.length);
     } else {
       setSlideIndex(slideIndex < path.length ? slideIndex + 1 : 0);
@@ -58,7 +58,7 @@ const Product = () => {
   };
 
   const RadioInput = ({ label, value, checked, setter, name }) => {
-    const handelChange = (name) => (e) => {};
+    const handelChange = name => e => {};
     //     let list = [...state]
 
     //     console.log("valueeee", e.target.value);
@@ -111,7 +111,7 @@ const Product = () => {
     return (
       <label>
         <input
-          type="radio"
+          type='radio'
           checked={checked == value}
           value={value}
           onChange={handelChange(name)}
@@ -133,8 +133,8 @@ const Product = () => {
   const incrementCount = () => {
     setCount(count + 1);
   };
-  const ChangeStatus = (i) => {
-    console.log("status", icon[i].status);
+  const ChangeStatus = i => {
+    console.log('status', icon[i].status);
     icon[i].status = !icon[i].status;
   };
   const decCount = () => {
@@ -147,16 +147,16 @@ const Product = () => {
   const [size, setSize] = React.useState();
   const [colName, setColName] = React.useState('');
   const [suppName, setSuppName] = React.useState('');
-    const [item, setItem] = useState({
-      name: '',
-      // supplier_id: null,
-      // category_id: null,
-      collection_id:null,
-      price:null,
-      variants: [],
-      combinations: [],
-      images: [],
-    });
+  const [item, setItem] = useState({
+    name: '',
+    // supplier_id: null,
+    // category_id: null,
+    collection_id: null,
+    price: null,
+    variants: [],
+    combinations: [],
+    images: [],
+  });
   // const [item, setItem] = useState({
   //   id: 1,
   //   name: "ABC",
@@ -175,106 +175,97 @@ const Product = () => {
     }
   };
 
-  const [comb, setcomb] = useState("");
+  const [comb, setcomb] = useState('');
   const [vid, setvid] = useState();
-  const [strr, setstrr] = useState("");
-  const [variant_name, setvariant_name] = useState("");
+  const [strr, setstrr] = useState('');
+  const [variant_name, setvariant_name] = useState('');
   const [radio, setRadiobtn] = useState({
-    selected: "",
-    name: "",
+    selected: '',
+    name: '',
   });
   const [radio2, setRadio2btn] = useState({
-    selected: "",
-    name: "",
+    selected: '',
+    name: '',
   });
   const [radio3, setRadio3btn] = useState({
-    selected: "",
-    name: "",
+    selected: '',
+    name: '',
   });
   const ChkCount = () => {
-    if(count===15)
-    setCount(count)
-    else
-    setCount(count=>count+1)
- }
- 
- const addToCart = () => {
-    
-  dispatch(addProduct(
-    {
-      id:   id,
-      name: item.name,
-      price: item.price,
-      count: count,
-      variant:item.variants,
-      image:'https://cdn.shopify.com/s/files/1/2337/7003/products/54_34eb250d-e0b3-415d-8668-db1f2de4120a_300x.jpg?v=1637756407'
+    if (count === 15) setCount(count);
+    else setCount(count => count + 1);
+  };
 
-    }
-  ))
-  // settoggle(true)
- // toast(`${item.name} Added Successfully`)
-  //router.push('/cart')
-}
+  const addToCart = () => {
+    dispatch(
+      addProduct({
+        id: id,
+        name: item.name,
+        price: item.price,
+        count: count,
+        variant: item.variants,
+        image:
+          'https://cdn.shopify.com/s/files/1/2337/7003/products/54_34eb250d-e0b3-415d-8668-db1f2de4120a_300x.jpg?v=1637756407',
+      })
+    );
+    // settoggle(true)
+    // toast(`${item.name} Added Successfully`)
+    //router.push('/cart')
+  };
   useEffect(() => {
-    let list=[]
- axios.get(`http://localhost:8080/ecom-api/products/${id}`)
- .then(res=>{
-  console.log("name",res.data.data)
-   setItem(res.data.data)  
-      axios.get(`http://localhost:8080/ecom-api/collections/${res.data.data.collection_id}`)
- .then(resp=>{
-  
-       setColName(resp.data.data.name)
-       axios.get(`http://localhost:8080/ecom-api/suppliers/${resp.data.data.brand_id}`)
-       .then(resp=>{
-             setSuppName(resp.data.data.name)
-          
-          }).catch(err=>console.log(err))
-       
-    }).catch(err=>console.log(err))
-   
-
-
-
- }).catch(err=>console.log(err))
-  
- 
-       
-}, [])
-
-
-
+    let list = [];
+    axios
+      .get(`http://localhost:8080/ecom-api/products/${id}`)
+      .then(res => {
+        console.log('name', res.data.data);
+        setItem(res.data.data);
+        axios
+          .get(
+            `http://localhost:8080/ecom-api/collections/${res.data.data.collection_id}`
+          )
+          .then(resp => {
+            setColName(resp.data.data.name);
+            axios
+              .get(
+                `http://localhost:8080/ecom-api/suppliers/${resp.data.data.brand_id}`
+              )
+              .then(resp => {
+                setSuppName(resp.data.data.name);
+              })
+              .catch(err => console.log(err));
+          })
+          .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
+  }, []);
 
   return (
     <>
-     <Navbar />
-    <Container>
-     
-      <Wrapper>
-        <Boxx>
-          <Arrow direction="left" onClick={() => handleClick("left")}>
-            <ArrowLeftOutlined />
-          </Arrow>
-          <ImgWrapper slideIndex={slideIndex}>
-            {path.map((pa, i) => (
-              <Slide bg={item.id} key={i}>
-                <ImgContainer>
-                  <ImageMagnifier img={pa} />
-                </ImgContainer>
-              </Slide>
-            ))}
-          </ImgWrapper>
-          <Arrow direction="right" onClick={() => handleClick("right")}>
-            <ArrowRightOutlined />
-          </Arrow>
-        </Boxx>
+      <Navbar />
+      <Container>
+        <Wrapper>
+          <Boxx>
+            <Arrow direction='left' onClick={() => handleClick('left')}>
+              <ArrowLeftOutlined />
+            </Arrow>
+            <ImgWrapper slideIndex={slideIndex}>
+              {path.map((pa, i) => (
+                <Slide bg={item.id} key={i}>
+                  <ImgContainer>
+                    <ImageMagnifier img={pa} />
+                  </ImgContainer>
+                </Slide>
+              ))}
+            </ImgWrapper>
+            <Arrow direction='right' onClick={() => handleClick('right')}>
+              <ArrowRightOutlined />
+            </Arrow>
+          </Boxx>
 
-        <InfoContainer>
-          <Title>
-            {item.name}
-          </Title>
-          <Desc>
-            {/* <div style={{ display: "flex", flexDirection: "row" }}>
+          <InfoContainer>
+            <Title>{item.name}</Title>
+            <Desc>
+              {/* <div style={{ display: "flex", flexDirection: "row" }}>
               <p>Brand :</p>
               <p style={{ color: "skyblue" }}>HEM</p>
             </div>
@@ -282,41 +273,51 @@ const Product = () => {
               <p>Collection :</p>
               <p style={{ color: "skyblue" }}>HEM</p>
             </div> */}
-            <p>Brand : {suppName}</p>
-            <p>Collection : {colName}</p>
-          </Desc>
+              <p>Brand : {suppName}</p>
+              <p>Collection : {colName}</p>
+            </Desc>
 
-          <AddContainer>
-          <AmountContainer>
-          <p
-                style={{
-                  fontWeight: "800",
-                  fontSize: "20px",
-                  marginLeft: "20px",
-                  color:'red',
-                  width:'150px'
-                }}
-              >
-                {count!=0?item.price*count:item.price} Rs
-              </p>
-              <span>
-              <button className={css.minus_btn}onClick={() => handleCount(setCount(count - 1))} >
-                  -
-              </button>
-              </span>
-    
-              <span>
-                <p className={css.counter}>{count}</p>
-              </span>
-              <span>
-                <button className={css.add_btn} onClick={() => ChkCount()} >
-                  +
-                </button>
-                
-              </span>
-              <p style={{paddingLeft:'8px',marginTop:'18px',fontWeight:'500'}}>Quantity</p>
-            </AmountContainer>
-            {/* <AmountContainer>
+            <AddContainer>
+              <AmountContainer>
+                <p
+                  style={{
+                    fontWeight: '800',
+                    fontSize: '20px',
+                    marginLeft: '20px',
+                    color: 'red',
+                    width: '150px',
+                  }}
+                >
+                  {count != 0 ? item.price * count : item.price} Rs
+                </p>
+                <span>
+                  <button
+                    className={css.minus_btn}
+                    onClick={() => handleCount(setCount(count - 1))}
+                  >
+                    -
+                  </button>
+                </span>
+
+                <span>
+                  <p className={css.counter}>{count}</p>
+                </span>
+                <span>
+                  <button className={css.add_btn} onClick={() => ChkCount()}>
+                    +
+                  </button>
+                </span>
+                <p
+                  style={{
+                    paddingLeft: '8px',
+                    marginTop: '18px',
+                    fontWeight: '500',
+                  }}
+                >
+                  Quantity
+                </p>
+              </AmountContainer>
+              {/* <AmountContainer>
          
               <p
                 style={{
@@ -341,97 +342,95 @@ const Product = () => {
                 </button>
               </span>
 </AmountContainer> */}
-            
-         
-          
-          </AddContainer>
-          <Desc>
-            <p style={{ fontSize: "16px", fontStyle: "italic" }}>
-              Estimated shipping date: <b>April 27, 2022</b> <br />
-              <br />
-              Note:Delivery will vary as per customer location.
-            </p>
-          </Desc>
+            </AddContainer>
+            <Desc>
+              <p style={{ fontSize: '16px', fontStyle: 'italic' }}>
+                Estimated shipping date: <b>April 27, 2022</b> <br />
+                <br />
+                Note:Delivery will vary as per customer location.
+              </p>
+            </Desc>
 
-          <Size>
-            <h4>SIZE</h4>
-            <SizeArea>
-              {icon.map((ic, i) => (
-                <Icon key={i}
-                  onClick={() => ChangeStatus(i)}
-                  style={
-                    ic.status == true
-                      ? { backgroundColor: "black", color: "white" }
-                      : { backgroundColor: "white", color: "black" }
-                  }
-                >
-                  {ic.name}
-                </Icon>
-              ))}
-            </SizeArea>
-          </Size>
+            <Size>
+              <h4>SIZE</h4>
+              <SizeArea>
+                {icon.map((ic, i) => (
+                  <Icon
+                    key={i}
+                    onClick={() => ChangeStatus(i)}
+                    style={
+                      ic.status == true
+                        ? { backgroundColor: 'black', color: 'white' }
+                        : { backgroundColor: 'white', color: 'black' }
+                    }
+                  >
+                    {ic.name}
+                  </Icon>
+                ))}
+              </SizeArea>
+            </Size>
 
-          <Button onClick={() => addToCart()}>ADD TO CART</Button>
-          <hr width="580px" />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              marginLeft: "40px",
-            }}
-          >
-            <h5>SIZE GUIDE</h5>
-            <h2
+            <Button onClick={() => addToCart()}>ADD TO CART</Button>
+            <hr width='580px' />
+            <div
               style={{
-                marginLeft: "auto",
-                marginRight: "20px",
-                cursor: "pointer",
+                display: 'flex',
+                flexDirection: 'row',
+                marginLeft: '40px',
               }}
             >
-              +
-            </h2>
-          </div>
-          <hr width="580px" />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              marginLeft: "40px",
-            }}
-          >
-            <h5>PRODUCT DESCRIPTION</h5>
-            <h2
+              <h5>SIZE GUIDE</h5>
+              <h2
+                style={{
+                  marginLeft: 'auto',
+                  marginRight: '20px',
+                  cursor: 'pointer',
+                }}
+              >
+                +
+              </h2>
+            </div>
+            <hr width='580px' />
+            <div
               style={{
-                marginLeft: "auto",
-                marginRight: "20px",
-                cursor: "pointer",
+                display: 'flex',
+                flexDirection: 'row',
+                marginLeft: '40px',
               }}
             >
-              +
-            </h2>
-          </div>
-          <hr width="580px" />
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              marginLeft: "40px",
-            }}
-          >
-            <h5>PRICE QUERY AND CUSTOMIZATION</h5>
-            <h2
+              <h5>PRODUCT DESCRIPTION</h5>
+              <h2
+                style={{
+                  marginLeft: 'auto',
+                  marginRight: '20px',
+                  cursor: 'pointer',
+                }}
+              >
+                +
+              </h2>
+            </div>
+            <hr width='580px' />
+            <div
               style={{
-                marginLeft: "auto",
-                marginRight: "20px",
-                cursor: "pointer",
+                display: 'flex',
+                flexDirection: 'row',
+                marginLeft: '40px',
               }}
             >
-              +
-            </h2>
-          </div>
-        </InfoContainer>
+              <h5>PRICE QUERY AND CUSTOMIZATION</h5>
+              <h2
+                style={{
+                  marginLeft: 'auto',
+                  marginRight: '20px',
+                  cursor: 'pointer',
+                }}
+              >
+                +
+              </h2>
+            </div>
+          </InfoContainer>
 
-        {/* {localStorage.getItem('token') &&
+          {/* {localStorage.getItem('token') &&
           <>
           {ratingValue==0?
           <Box component="fieldset" mb={3} borderColor="transparent" 
@@ -467,24 +466,23 @@ const Product = () => {
        
       </Review>
 }*/}
-      </Wrapper>
+        </Wrapper>
 
-      {/* carousel showed in product page */}
-      <h2
-        style={{
-          marginLeft: "30px",
-          fontSize: "1.8em",
-          letterSpacing: ".15em",
-        }}
-      >
-        Related Products
-      </h2>
+        {/* carousel showed in product page */}
+        <h2
+          style={{
+            marginLeft: '30px',
+            fontSize: '1.8em',
+            letterSpacing: '.15em',
+          }}
+        >
+          Related Products
+        </h2>
 
-      <Carousel />
-     
-    </Container>
-    <Newsletter/>
-    <Footer />
+        <Carousel />
+      </Container>
+      <Newsletter />
+      <Footer />
     </>
   );
 };
@@ -550,7 +548,7 @@ const FilterSizeOpt = styled.span`
 `;
 const Container = styled.div`
   background-color: whitesmoke;
-  margin-top:40px;
+  margin-top: 40px;
 `;
 
 const Wrapper = styled.div`
@@ -575,7 +573,7 @@ const ImgWrapper = styled.div`
   margin-top: -60px;
   display: flex;
   transition: all 1.5s ease;
-  transform: translateX(${(props) => props.slideIndex * -500}px);
+  transform: translateX(${props => props.slideIndex * -500}px);
 `;
 
 const ImgContainer = styled.div`
@@ -651,7 +649,7 @@ const Slide = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
-  background-color: #${(props) => props.bg};
+  background-color: #${props => props.bg};
 `;
 
 const Button = styled.button`
@@ -687,8 +685,8 @@ const Arrow = styled.div`
   position: absolute;
   top: 0;
   bottom: 0;
-  left: ${(props) => props.direction === "left" && "10px"};
-  right: ${(props) => props.direction === "right" && "10px"};
+  left: ${props => props.direction === 'left' && '10px'};
+  right: ${props => props.direction === 'right' && '10px'};
   margin: auto;
   cursor: pointer;
   opacity: 0.5;

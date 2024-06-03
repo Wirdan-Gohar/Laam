@@ -1,211 +1,176 @@
-import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
-import { useState } from "react";
-import styled from "styled-components";
+import { ArrowLeftOutlined, ArrowRightOutlined } from '@material-ui/icons';
+import { useState } from 'react';
+import styled from 'styled-components';
 
 // import { mobile } from "../pages/responsive";
-import Link from "next/link";
-import Navbar from "../components/Navbar";
-import Footer from "../components/foot/Footer";
-import { Button } from "reactstrap";
-import Newsletter from "../components/foot/Newsletter";
+import Link from 'next/link';
+import Navbar from '../components/Navbar';
+import Footer from '../components/foot/Footer';
+import { Button } from 'reactstrap';
+import Newsletter from '../components/foot/Newsletter';
 const Blog = () => {
-    return(
-        <>
-        <Navbar/>
-        <Container>
-            <div style={{display:'flex',flexDirection:'row'}}>
-         <ImgWrap src='https://cdn.shopify.com/s/files/1/2337/7003/files/666_1500x.jpg?v=1646047765'>
-         </ImgWrap>
-         <Right>
-             <H2>
-                LAWN BRANDS YOU NEED
-             </H2>
-             <P>
-             To request for an order cancellation please email us the order with product name, 
-        original proof of purchase receipt and issue at customercare@laam.pk and our customer care 
-        agent will get in contact with you. Alternatively you can call us on +92 316 7776158 from
-         Monday to Saturday between 10:00 am - 6:00 pm (Pakistan Standard Time). Further, to proceed with the case,
-          your purchase should be sent back to us within 14 days of receiving your order.
-             </P>
-            </Right> 
-         </div>
-         <H2>EXPLORE</H2>
-         <Flex>
-             <Div>
-                 
-                <Img src='https://cdn.shopify.com/s/files/1/2337/7003/articles/7_Celebrities_Giving_Us_Fashion_Inspiration_in_HEM_1500x.jpg?v=1644396160'>
-                </Img>
-                <Text>
-                  <Date>February 21, 2022</Date>
-                  <Tag>These Lawn Brands is Exactly What You...</Tag>
-                  <Name>By:Fatima Farooq</Name>
-                  <Read>Continue Reading</Read>
-                </Text> 
-                
-               </Div>
-               <Div>
-                <Img src='https://cdn.shopify.com/s/files/1/2337/7003/articles/Chic_Ways_to_Wear_Velvet_This_Winter_Season_1500x.jpg?v=1638338177'>
-                </Img>
-                <Text>
-                <Date>December 30, 2021</Date>
-                  <Tag>7 Celebrities Giving Us Fashion Inspi...</Tag>
-                  <Name>By:Fatima Farooq</Name>
-                  <Read>Continue Reading</Read>
-                </Text> 
-                
-                </Div>
-                <Div>
-                <Img src='https://cdn.shopify.com/s/files/1/2337/7003/articles/Pakistani_Wedding_Traditions_1500x.jpg?v=1642511819'>
-                </Img>
-                <Text>
-                <Date>January 19, 2022</Date>
-                  <Tag>Pakistani Wedding Traditions; The Eve...</Tag>
-                  <Name>By:Fatima Farooq</Name>
-                  <Read>Continue Reading</Read>
-                </Text> 
-                </Div>
-                <Div>
-                <Img src='https://cdn.shopify.com/s/files/1/2337/7003/articles/Timeless_Pakistani_Suits_For_Every_Occasion_1500x.jpg?v=1640760688'>
-                </Img>
-                <Text>
-                <Date>December 28, 2021</Date>
-                  <Tag>Timeless Pakistani Suits For Every Oc..</Tag>
-                  <Name>By:Fatima Farooq</Name>
-                  <Read>Continue Reading</Read>
-                </Text> 
-                
-             </Div>
-         </Flex>
-         </Container>
-         <Newsletter/>
-        <Footer/>
-        </>
-      
-        
-        
-    )
-}
+  return (
+    <>
+      <Navbar />
+      <Container>
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          <ImgWrap src='https://cdn.shopify.com/s/files/1/2337/7003/files/666_1500x.jpg?v=1646047765'></ImgWrap>
+          <Right>
+            <H2>LAWN BRANDS YOU NEED</H2>
+            <P>
+              To request for an order cancellation please email us the order
+              with product name, original proof of purchase receipt and issue at
+              customercare@laam.pk and our customer care agent will get in
+              contact with you. Alternatively you can call us on +92 316 7776158
+              from Monday to Saturday between 10:00 am - 6:00 pm (Pakistan
+              Standard Time). Further, to proceed with the case, your purchase
+              should be sent back to us within 14 days of receiving your order.
+            </P>
+          </Right>
+        </div>
+        <H2>EXPLORE</H2>
+        <Flex>
+          <Div>
+            <Img src='https://cdn.shopify.com/s/files/1/2337/7003/articles/7_Celebrities_Giving_Us_Fashion_Inspiration_in_HEM_1500x.jpg?v=1644396160'></Img>
+            <Text>
+              <Date>February 21, 2022</Date>
+              <Tag>These Lawn Brands is Exactly What You...</Tag>
+              <Name>By:Fatima Farooq</Name>
+              <Read>Continue Reading</Read>
+            </Text>
+          </Div>
+          <Div>
+            <Img src='https://cdn.shopify.com/s/files/1/2337/7003/articles/Chic_Ways_to_Wear_Velvet_This_Winter_Season_1500x.jpg?v=1638338177'></Img>
+            <Text>
+              <Date>December 30, 2021</Date>
+              <Tag>7 Celebrities Giving Us Fashion Inspi...</Tag>
+              <Name>By:Fatima Farooq</Name>
+              <Read>Continue Reading</Read>
+            </Text>
+          </Div>
+          <Div>
+            <Img src='https://cdn.shopify.com/s/files/1/2337/7003/articles/Pakistani_Wedding_Traditions_1500x.jpg?v=1642511819'></Img>
+            <Text>
+              <Date>January 19, 2022</Date>
+              <Tag>Pakistani Wedding Traditions; The Eve...</Tag>
+              <Name>By:Fatima Farooq</Name>
+              <Read>Continue Reading</Read>
+            </Text>
+          </Div>
+          <Div>
+            <Img src='https://cdn.shopify.com/s/files/1/2337/7003/articles/Timeless_Pakistani_Suits_For_Every_Occasion_1500x.jpg?v=1640760688'></Img>
+            <Text>
+              <Date>December 28, 2021</Date>
+              <Tag>Timeless Pakistani Suits For Every Oc..</Tag>
+              <Name>By:Fatima Farooq</Name>
+              <Read>Continue Reading</Read>
+            </Text>
+          </Div>
+        </Flex>
+      </Container>
+      <Newsletter />
+      <Footer />
+    </>
+  );
+};
 export default Blog;
 
-
-const Date= styled.div`
-    font-weight:300;
-    padding:10px;
-    font-size:12px;
-    color:grey;
-    
-  `;
-  const Tag= styled.div`
-  font-weight:700;
-  font-size:28px;
-  padding:6px;
-  
-  
+const Date = styled.div`
+  font-weight: 300;
+  padding: 10px;
+  font-size: 12px;
+  color: grey;
 `;
-const Name= styled.div`
-    font-weight:800;
-    padding:6px;
-    font-size:16px;
-    color:grey;
-   
-    
-  `;
-  const Read= styled.div`
-  font-weight:800;
-  padding:6px;
-  font-size:20px;
-  
-  margin-top:10px;
-  
+const Tag = styled.div`
+  font-weight: 700;
+  font-size: 28px;
+  padding: 6px;
 `;
+const Name = styled.div`
+  font-weight: 800;
+  padding: 6px;
+  font-size: 16px;
+  color: grey;
+`;
+const Read = styled.div`
+  font-weight: 800;
+  padding: 6px;
+  font-size: 20px;
 
+  margin-top: 10px;
+`;
 
 const Container = styled.div`
-    background-color:white;
-    margin-top:98px;
-    
-  `;
-  const Container2 = styled.div`
-  background-color:white;
-
-  
+  background-color: white;
+  margin-top: 98px;
+`;
+const Container2 = styled.div`
+  background-color: white;
 `;
 const ImgWrap = styled.img`
- width:1000px;
-  
+  width: 1000px;
 `;
 const ImgWrap2 = styled.img`
- height:170px;
-
+  height: 170px;
 `;
-const Img= styled.img`
- height:390px;
-
+const Img = styled.img`
+  height: 390px;
 `;
-const Text= styled.div`
- height:180px;
- background-color:whitesmoke;
-
+const Text = styled.div`
+  height: 180px;
+  background-color: whitesmoke;
 `;
 
 const Div = styled.div`
-display:flex;
-flex-direction:column;
-margin-bottom:40px;
-
-`
-const Flex = styled.div`
- display:flex;
- flex-direction:row;
- flex-wrap:wrap;
- margin-top:20px;
- margin-left:100px;
- margin-right:100px;
- justify-content:space-between;
- margin-bottom:20px;
-
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
 `;
-const H2=styled.div`
-    text-align:center;
-    font-weight:1000;
-    font-size:38px;
-    margin-top:40px;
-    margin-left:40px;
-    font-size:38px;
-`
+const Flex = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+`;
+const H2 = styled.div`
+  text-align: center;
+  font-weight: 1000;
+  font-size: 38px;
+  margin-top: 40px;
+  margin-left: 40px;
+  font-size: 38px;
+`;
 const P = styled.div`
- 
-  
-  justify-content:justify;
-  padding:18px;
+  justify-content: justify;
+  padding: 18px;
 `;
 const Button1 = styled.button`
-  width:200px;
-  background-color:black;
-  color:white;
-  padding:10px;
-  margin-left:700px;
-  margin-right:700px;
-  margin-bottom:30px;
-  margin-top:20px;
+  width: 200px;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  margin-left: 700px;
+  margin-right: 700px;
+  margin-bottom: 30px;
+  margin-top: 20px;
 `;
 
-const Icon= styled.div`
-margin-right:30px;
-background-color:whitesmoke;
-width:800px;
-height:250px; 
-    
-  `;
-  const Right= styled.div`
+const Icon = styled.div`
+  margin-right: 30px;
+  background-color: whitesmoke;
+  width: 800px;
+  height: 250px;
+`;
+const Right = styled.div`
+  background-color: whitesmoke;
+`;
 
-  background-color:whitesmoke;
- 
-      
-    `;
-
-    
-         {/* <H2>OUR THREE EASY STEPS</H2>
+{
+  /* <H2>OUR THREE EASY STEPS</H2>
          <Flex>
              <div>
          <ImgWrap2 src='https://cdn.shopify.com/s/files/1/2337/7003/files/1_06259c75-4952-4d24-af55-b7a39e6a7b98_400x.png?v=1628769113'>
@@ -244,4 +209,5 @@ height:250px;
          <P>You have the choice to deliver your products to the customers yourself or let LAAM manage the delivery of the orders to customers.</P>
          </Icon>
          </Flex2>
-        </Container2> */}
+        </Container2> */
+}

@@ -1,36 +1,33 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 import { useEffect, useState } from 'react';
 
-import axios from "axios";
+import axios from 'axios';
 //import 'bootstrap/dist/css/bootstrap.min.css';
-import {  Spinner } from 'react-bootstrap'
+import { Spinner } from 'react-bootstrap';
 
-import Head from 'next/head'
+import Head from 'next/head';
 const Spin = () => {
-        
-    return (
-        <Container>
-        <Spinner
-                     as="span"
-                     variant="light"
-                     size="sm"
-                     role="status"
-                     aria-hidden="true"
-                     animation="border"/>
-                     <label style={{color:'white',marginLeft:'auto',marginRight:'auto'}}>Proceessing......</label>
+  return (
+    <Container>
+      <Spinner
+        as='span'
+        variant='light'
+        size='sm'
+        role='status'
+        aria-hidden='true'
+        animation='border'
+      />
+      <label
+        style={{ color: 'white', marginLeft: 'auto', marginRight: 'auto' }}
+      >
+        Proceessing......
+      </label>
     </Container>
-                    
-
-    );
+  );
 };
 
 export default Spin;
-
-
-
-
-
 
 const Container = styled.div`
 display:flex;
@@ -53,6 +50,3 @@ display:flex;
                 color: #ffffff;
               background-color: teal;
               border: 2px solid teal;`;
-
-
-

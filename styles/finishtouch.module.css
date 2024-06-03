@@ -1,24 +1,22 @@
-.borderstyle{
-    border-top:20px solid #F7F7F7;
-  }
+.borderstyle {
+  border-top: 20px solid #f7f7f7;
+}
 
+.outline {
+  background-color: white;
+}
 
-  .outline{
-    background-color: white;
-    
-  }
+.spacing {
+  margin-left: 30px;
+  font-size: 1.8em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
 
-  .spacing{
-    margin-left: 30px;
-    font-size: 1.8em;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-  }
-
-  .alignment{
-      margin-left: 80px; 
-  }
-.imgSize{
-    height:287px;
-    width:217px;
+.alignment {
+  margin-left: 80px;
+}
+.imgSize {
+  height: 287px;
+  width: 217px;
 }
